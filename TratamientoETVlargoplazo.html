@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tratamiento de la Enfermedad Tromboembólica Venosa a Largo Plazo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1, h2 {
+            color: #2E5EAA;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section label {
+            font-weight: bold;
+        }
+        .checkbox-group, .radio-group {
+            margin-left: 20px;
+        }
+        .checkbox-group label, .radio-group label {
+            font-weight: normal;
+        }
+        .result {
+            background-color: #F0F8FF;
+            padding: 15px;
+            border: 1px solid #ADD8E6;
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #2E5EAA;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #1C3E75;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Tratamiento de la Enfermedad Tromboembólica Venosa a Largo Plazo</h1>
+    <p><em>Según la Sociedad Española de Medicina Interna</em></p>
+
+    <!-- Sección 1: Evaluación de Factores de Riesgo -->
+    <div class="section" id="section1">
+        <h2>1. Evaluación de Factores de Riesgo</h2>
+        <label>Seleccione los factores de riesgo presentes:</label>
+        <div class="checkbox-group">
+            <h3>Factores Transitorios Mayores</h3>
+            <input type="checkbox" id="cirugia_mayor"> <label for="cirugia_mayor">Cirugía mayor</label><br>
+            <input type="checkbox" id="hospitalizacion_mayor3"> <label for="hospitalizacion_mayor3">Hospitalización > 3 días</label><br>
+            <input type="checkbox" id="traumatismo_fractura"> <label for="traumatismo_fractura">Traumatismo con fractura</label><br>
+            <input type="checkbox" id="cesarea"> <label for="cesarea">Cesárea</label><br>
+
+            <h3>Factores Transitorios Menores</h3>
+            <input type="checkbox" id="cirugia_menor"> <label for="cirugia_menor">Cirugía menor</label><br>
+            <input type="checkbox" id="domicilio_mayor3"> <label for="domicilio_mayor3">Encamamiento domiciliario > 3 días</label><br>
+            <input type="checkbox" id="hospitalizacion_menor3"> <label for="hospitalizacion_menor3">Hospitalización < 3 días</label><br>
+            <input type="checkbox" id="estrogenos"> <label for="estrogenos">Estrógenos/anticonceptivos</label><br>
+            <input type="checkbox" id="embarazo"> <label for="embarazo">Embarazo/puérperio</label><br>
+            <input type="checkbox" id="viajes"> <label for="viajes">Viajes prolongados</label><br>
+            <input type="checkbox" id="lesion_sin_fractura"> <label for="lesion_sin_fractura">Lesión en extremidad inferior sin fractura</label><br>
+
+            <h3>Factores Permanentes Mayores</h3>
+            <input type="checkbox" id="cancer_activo"> <label for="cancer_activo">Cáncer activo</label><br>
+            <input type="checkbox" id="sindrome_antifosfolipido"> <label for="sindrome_antifosfolipido">Síndrome antifosfolípido</label><br>
+            <input type="checkbox" id="episodios_idiopaticos"> <label for="episodios_idiopaticos">≥2 episodios trombóticos idiopáticos</label><br>
+
+            <h3>Factores Permanentes Menores</h3>
+            <input type="checkbox" id="enfermedad_intestinal"> <label for="enfermedad_intestinal">Enfermedad inflamatoria intestinal</label><br>
+            <input type="checkbox" id="enfermedad_autoinmune"> <label for="enfermedad_autoinmune">Enfermedad autoinmune activa</label><br>
+            <input type="checkbox" id="inmovilidad_permanente"> <label for="inmovilidad_permanente">Inmovilidad permanente</label><br>
+        </div>
+        <button onclick="evaluarFactoresRiesgo()">Evaluar Factores de Riesgo</button>
+        <div class="result" id="resultado1"></div>
+    </div>
+
+    <!-- Sección 2: Valoración del Riesgo de Hemorragia -->
+    <div class="section" id="section2">
+        <h2>2. Valoración del Riesgo de Hemorragia</h2>
+        <label>Complete la siguiente información:</label>
+        <div>
+            <h3>Escala VTE-BLEED</h3>
+            <input type="checkbox" id="vte_cancer_activo"> <label for="vte_cancer_activo">Cáncer activo</label><br>
+            <input type="checkbox" id="vte_varon_hta"> <label for="vte_varon_hta">Varón con hipertensión arterial</label><br>
+            <input type="checkbox" id="vte_anemia"> <label for="vte_anemia">Anemia</label><br>
+            <input type="checkbox" id="vte_historial_sangrado"> <label for="vte_historial_sangrado">Historia de sangrado</label><br>
+            <label>Edad: <input type="number" id="vte_edad" min="0" max="120"></label><br>
+            <input type="checkbox" id="vte_insuficiencia_renal"> <label for="vte_insuficiencia_renal">Insuficiencia renal</label><br>
+
+            <h3>Escala RIETE</h3>
+            <input type="checkbox" id="riete_sangrado_reciente"> <label for="riete_sangrado_reciente">Sangrado mayor reciente</label><br>
+            <input type="checkbox" id="riete_insuficiencia_renal"> <label for="riete_insuficiencia_renal">Insuficiencia renal</label><br>
+            <input type="checkbox" id="riete_anemia"> <label for="riete_anemia">Anemia</label><br>
+            <label>Edad: <input type="number" id="riete_edad" min="0" max="120"></label><br>
+            <input type="checkbox" id="riete_embolia_pulmonar"> <label for="riete_embolia_pulmonar">Embolia pulmonar</label><br>
+            <input type="checkbox" id="riete_cancer_activo"> <label for="riete_cancer_activo">Cáncer activo</label><br>
+
+            <h3>Escala ACCP</h3>
+            <input type="checkbox" id="accp_edad_65"> <label for="accp_edad_65">Edad ≥65 años</label><br>
+            <input type="checkbox" id="accp_edad_75"> <label for="accp_edad_75">Edad ≥75 años</label><br>
+            <input type="checkbox" id="accp_cancer"> <label for="accp_cancer">Cáncer</label><br>
+            <input type="checkbox" id="accp_cancer_metastasico"> <label for="accp_cancer_metastasico">Cáncer metastásico</label><br>
+            <input type="checkbox" id="accp_insuficiencia_hepatica"> <label for="accp_insuficiencia_hepatica">Insuficiencia hepática</label><br>
+            <input type="checkbox" id="accp_insuficiencia_renal"> <label for="accp_insuficiencia_renal">Insuficiencia renal</label><br>
+            <input type="checkbox" id="accp_trombocitopenia"> <label for="accp_trombocitopenia">Trombocitopenia</label><br>
+            <input type="checkbox" id="accp_ictus"> <label for="accp_ictus">Ictus previo</label><br>
+            <input type="checkbox" id="accp_diabetes"> <label for="accp_diabetes">Diabetes</label><br>
+            <input type="checkbox" id="accp_anemia"> <label for="accp_anemia">Anemia</label><br>
+            <input type="checkbox" id="accp_antiagregantes"> <label for="accp_antiagregantes">Antiagregantes</label><br>
+            <input type="checkbox" id="accp_mal_control"> <label for="accp_mal_control">Mal control de la anticoagulación</label><br>
+            <input type="checkbox" id="accp_funcional_reducida"> <label for="accp_funcional_reducida">Capacidad funcional reducida</label><br>
+            <input type="checkbox" id="accp_cirugia_reciente"> <label for="accp_cirugia_reciente">Cirugía reciente</label><br>
+            <input type="checkbox" id="accp_caidas"> <label for="accp_caidas">Caídas recientes</label><br>
+            <input type="checkbox" id="accp_alcohol"> <label for="accp_alcohol">Abuso de alcohol</label><br>
+        </div>
+        <button onclick="evaluarRiesgoHemorragia()">Evaluar Riesgo de Hemorragia</button>
+        <div class="result" id="resultado2"></div>
+    </div>
+
+    <!-- Sección 3: Valoración del Riesgo de Recurrencia -->
+    <div class="section" id="section3">
+        <h2>3. Valoración del Riesgo de Recurrencia</h2>
+        <label>Complete la siguiente información:</label>
+        <div>
+            <input type="checkbox" id="herdoo_sindrome"> <label for="herdoo_sindrome">Síndrome postrombótico</label><br>
+            <label>Dímero D (ng/mL): <input type="number" id="herdoo_dimero" min="0"></label><br>
+            <label>IMC (kg/m²): <input type="number" id="herdoo_imc" min="0" step="0.1"></label><br>
+            <label>Edad: <input type="number" id="herdoo_edad" min="0" max="120"></label><br>
+            <label>Sexo:</label>
+            <div class="radio-group">
+                <input type="radio" id="sexo_varon" name="sexo" value="varon"> <label for="sexo_varon">Varón</label><br>
+                <input type="radio" id="sexo_mujer" name="sexo" value="mujer"> <label for="sexo_mujer">Mujer</label><br>
+            </div>
+        </div>
+        <button onclick="evaluarRiesgoRecurrencia()">Evaluar Riesgo de Recurrencia</button>
+        <div class="result" id="resultado3"></div>
+    </div>
+
+    <!-- Sección 4: Recomendaciones de Tratamiento -->
+    <div class="section" id="section4">
+        <h2>4. Recomendaciones de Tratamiento</h2>
+        <div id="recomendaciones"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        function evaluarFactoresRiesgo() {
+            const factoresTransitorios = [
+                document.getElementById('cirugia_mayor').checked,
+                document.getElementById('hospitalizacion_mayor3').checked,
+                document.getElementById('traumatismo_fractura').checked,
+                document.getElementById('cesarea').checked,
+                document.getElementById('cirugia_menor').checked,
+                document.getElementById('domicilio_mayor3').checked,
+                document.getElementById('hospitalizacion_menor3').checked,
+                document.getElementById('estrogenos').checked,
+                document.getElementById('embarazo').checked,
+                document.getElementById('viajes').checked,
+                document.getElementById('lesion_sin_fractura').checked
+            ];
+
+            const factoresPermanentes = [
+                document.getElementById('cancer_activo').checked,
+                document.getElementById('sindrome_antifosfolipido').checked,
+                document.getElementById('episodios_idiopaticos').checked,
+                document.getElementById('enfermedad_intestinal').checked,
+                document.getElementById('enfermedad_autoinmune').checked,
+                document.getElementById('inmovilidad_permanente').checked
+            ];
+
+            let resultado = '';
+            if (factoresPermanentes.includes(true)) {
+                resultado = 'Se recomienda mantener el tratamiento anticoagulante de forma indefinida debido a la presencia de factores de riesgo permanentes.';
+            } else if (factoresTransitorios.includes(true)) {
+                resultado = 'Se recomienda suspender la anticoagulación ya que los factores de riesgo transitorios se han resuelto.';
+            } else {
+                resultado = 'No hay factores de riesgo presentes. Se recomienda suspender la anticoagulación.';
+            }
+
+            document.getElementById('resultado1').innerText = resultado;
+        }
+
+        function evaluarRiesgoHemorragia() {
+            // Cálculo VTE-BLEED
+            let vte_puntos = 0;
+            if (document.getElementById('vte_cancer_activo').checked) vte_puntos += 1.5;
+            if (document.getElementById('vte_varon_hta').checked) vte_puntos += 1.5;
+            if (document.getElementById('vte_anemia').checked) vte_puntos += 1.5;
+            if (document.getElementById('vte_historial_sangrado').checked) vte_puntos += 1.5;
+            const vte_edad = parseInt(document.getElementById('vte_edad').value);
+            if (vte_edad >= 60) vte_puntos += 1.5;
+            if (document.getElementById('vte_insuficiencia_renal').checked) vte_puntos += 1.5;
+
+            // Cálculo RIETE
+            let riete_puntos = 0;
+            if (document.getElementById('riete_sangrado_reciente').checked) riete_puntos += 2;
+            if (document.getElementById('riete_insuficiencia_renal').checked) riete_puntos += 1.5;
+            if (document.getElementById('riete_anemia').checked) riete_puntos += 1.5;
+            const riete_edad = parseInt(document.getElementById('riete_edad').value);
+            if (riete_edad >= 75) riete_puntos += 1.5;
+            if (document.getElementById('riete_embolia_pulmonar').checked) riete_puntos += 1;
+            if (document.getElementById('riete_cancer_activo').checked) riete_puntos += 1;
+
+            // Cálculo ACCP
+            let accp_factores = 0;
+            if (document.getElementById('accp_edad_65').checked) accp_factores += 1;
+            if (document.getElementById('accp_edad_75').checked) accp_factores += 1;
+            if (document.getElementById('accp_cancer').checked) accp_factores += 1;
+            if (document.getElementById('accp_cancer_metastasico').checked) accp_factores += 1;
+            if (document.getElementById('accp_insuficiencia_hepatica').checked) accp_factores += 1;
+            if (document.getElementById('accp_insuficiencia_renal').checked) accp_factores += 1;
+            if (document.getElementById('accp_trombocitopenia').checked) accp_factores += 1;
+            if (document.getElementById('accp_ictus').checked) accp_factores += 1;
+            if (document.getElementById('accp_diabetes').checked) accp_factores += 1;
+            if (document.getElementById('accp_anemia').checked) accp_factores += 1;
+            if (document.getElementById('accp_antiagregantes').checked) accp_factores += 1;
+            if (document.getElementById('accp_mal_control').checked) accp_factores += 1;
+            if (document.getElementById('accp_funcional_reducida').checked) accp_factores += 1;
+            if (document.getElementById('accp_cirugia_reciente').checked) accp_factores += 1;
+            if (document.getElementById('accp_caidas').checked) accp_factores += 1;
+            if (document.getElementById('accp_alcohol').checked) accp_factores += 1;
+
+            // Determinar riesgo
+            let riesgo = '';
+            if ( (vte_puntos < 2 || isNaN(vte_puntos)) && (riete_puntos === 0 || isNaN(riete_puntos)) && accp_factores === 0) {
+                riesgo = 'Riesgo bajo de hemorragia. Se recomienda continuar reevaluando.';
+            } else if ( (riete_puntos >= 1 && riete_puntos <= 4) || accp_factores === 1) {
+                riesgo = 'Riesgo moderado de hemorragia. Se recomienda continuar reevaluando.';
+            } else if ( (vte_puntos >= 2) || (riete_puntos >= 4) || (accp_factores >= 2) ) {
+                riesgo = 'Riesgo alto de hemorragia. Se recomienda valorar suspender el tratamiento.';
+            } else {
+                riesgo = 'No se pudo determinar el riesgo de hemorragia. Por favor, verifique la información ingresada.';
+            }
+
+            document.getElementById('resultado2').innerText = riesgo;
+        }
+
+        function evaluarRiesgoRecurrencia() {
+            let puntos = 0;
+            if (document.getElementById('herdoo_sindrome').checked) puntos += 1;
+            const dimero = parseFloat(document.getElementById('herdoo_dimero').value);
+            if (dimero >= 250) puntos += 1;
+            const imc = parseFloat(document.getElementById('herdoo_imc').value);
+            if (imc >= 30) puntos += 1;
+            const edad = parseInt(document.getElementById('herdoo_edad').value);
+            if (edad >= 65) puntos += 1;
+            const sexo = document.querySelector('input[name="sexo"]:checked')?.value;
+
+            let resultado = '';
+            if (sexo === 'varon') {
+                resultado = 'Alto riesgo de recurrencia. Se recomienda tratamiento indefinido.';
+            } else if (sexo === 'mujer') {
+                if (puntos >= 2) {
+                    resultado = 'Alto riesgo de recurrencia. Se recomienda tratamiento indefinido.';
+                } else if (puntos <= 1) {
+                    resultado = 'Bajo riesgo de recurrencia. Se recomienda suspender el tratamiento.';
+                }
+            } else {
+                resultado = 'Por favor, seleccione el sexo para evaluar el riesgo de recurrencia.';
+            }
+
+            document.getElementById('resultado3').innerText = resultado;
+
+            // Mostrar recomendaciones de tratamiento
+            mostrarRecomendaciones();
+        }
+
+        function mostrarRecomendaciones() {
+            let recomendaciones = `
+                <h3>Fases del Tratamiento Anticoagulante</h3>
+                <h4>Tratamiento Inicial (0-21 días):</h4>
+                <ul>
+                    <li>Apixaban 10 mg cada 12 horas durante 7 días</li>
+                    <li>Rivaroxaban 15 mg cada 12 horas durante 21 días</li>
+                    <li>HBPM (Heparina de Bajo Peso Molecular) 5-10 días</li>
+                    <li>Fondaparinux</li>
+                </ul>
+                <h4>Fase de Tratamiento (3-6 meses):</h4>
+                <ul>
+                    <li>Apixaban 5 mg cada 12 horas</li>
+                    <li>Rivaroxaban 20 mg cada 24 horas</li>
+                    <li>Edoxaban 60 mg cada 24 horas</li>
+                    <li>Dabigatran ≥150 mg cada 12 horas</li>
+                    <li>AVK (Antagonista de Vitamina K, INR 2-3)</li>
+                    <li>HBPM o Fondaparinux</li>
+                </ul>
+                <h4>Tratamiento Extendido (tras 6 meses):</h4>
+                <ul>
+                    <li>Apixaban 2.5 mg cada 12 horas</li>
+                    <li>Rivaroxaban 10 mg cada 24 horas</li>
+                    <li>AVK (INR 2-3)</li>
+                    <li>HBPM o Fondaparinux</li>
+                </ul>
+                <p><strong>Nota:</strong> La TVP distal aislada se recomienda retirar siempre la anticoagulación a los 3 meses, salvo que esté asociada a cáncer.</p>
+                <p>Es importante realizar una reevaluación periódica del riesgo de hemorragia y recurrencia.</p>
+            `;
+            document.getElementById('recomendaciones').innerHTML = recomendaciones;
+        }
+    </script>
+
+</body>
+</html>
