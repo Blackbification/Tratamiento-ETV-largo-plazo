@@ -1,7 +1,7 @@
 Uso
 Abrir la aplicación:
 
-Abre el archivo app_trombosis.html en tu navegador web preferido (Chrome, Firefox, Edge, etc.).
+Abre el archivo html en tu navegador web preferido (Chrome, Firefox, Edge, etc.).
 Navegar por las secciones:
 
 Sección 1: Selecciona los factores de riesgo que aplican al paciente y haz clic en "Evaluar Factores de Riesgo" para obtener una recomendación inicial.
